@@ -1,0 +1,78 @@
+* {
+  font-family: "Asimovian", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: white url("/public/images/bg.png") no-repeat center center;
+}
+
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+#main p {
+  font-size: 128px;
+  writing-mode: vertical-rl;
+  line-height: 0;
+}
+
+.dog-icon {
+  cursor: pointer;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dog-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+#calculator {
+  width: 100%;
+  max-width: 500px;
+  border: 10px solid #e4e4e4;
+  background-color: rgba(234, 234, 234, 0.8);
+  border-radius: 40px;
+  padding: 20px;
+}
+
+#calculator form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+}
+#calculator form input {
+  background-image: linear-gradient(#2fdb97, #1e8f62);
+  border: 10px solid #e4e4e4;
+  border-radius: 20px;
+  color: white;
+  font-size: 84px;
+  width: 94%;
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: white; /* Overrides Firefox's default opacity lowering */
+}
+
+#calculator-icons {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 20px;
+}
