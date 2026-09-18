@@ -3,11 +3,28 @@ import { useState } from "react";
 export default function DogIcon(props) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const sounds = [
+    "/sounds/bark1.mp3",
+    "/sounds/bark2.mp3",
+    "/sounds/bark3.mp3",
+    "/sounds/bark4.mp3",
+  ];
+
+  const randomBark = () => {
+    const random = Math.floor(Math.random() * sounds.length);
+
+    const audio = new Audio(sounds[random]);
+    audio.play().catch((error) => {
+      console.error("Playback failed:", error);
+    });
+  };
+
   return (
     <div
       className="dog-icon"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={randomBark}
     >
       {isHovered ? (
         <img src={props.second} alt={props.alt} />
