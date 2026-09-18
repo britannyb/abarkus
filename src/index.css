@@ -6,6 +6,7 @@
 
 body {
   background: white url("/images/bg.png") no-repeat center center;
+  min-width: 320px;
 }
 
 #main {
@@ -13,12 +14,6 @@ body {
   align-items: center;
   justify-content: center;
   padding-top: 40px;
-}
-
-#main p {
-  font-size: 128px;
-  writing-mode: vertical-rl;
-  line-height: 0;
 }
 
 .dog-icon {
@@ -53,6 +48,7 @@ body {
   justify-items: center;
   width: 100%;
 }
+
 #calculator form input {
   background-image: linear-gradient(#2fdb97, #1e8f62);
   border: 10px solid #e4e4e4;
@@ -75,4 +71,44 @@ textarea::placeholder {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 20px;
+}
+
+@media (max-width: 600px) {
+  #main {
+    padding-top: 60px;
+  }
+
+  .dog-icon {
+    height: 80px;
+    width: 80px;
+  }
+
+  #calculator {
+    border: 6px solid #e4e4e4;
+    padding: 8px;
+    max-width: 400px;
+  }
+
+  #calculator form input {
+    border: 6px solid #e4e4e4;
+    font-size: 64px;
+    width: 90%;
+    margin-bottom: 10px;
+    padding-left: 10px;
+  }
+}
+
+@media (max-width: 440px) {
+  #main {
+    padding-top: 90px;
+  }
+
+  .dog-icon {
+    height: 60px;
+    width: 60px;
+  }
+
+  #calculator {
+    max-width: 300px;
+  }
 }

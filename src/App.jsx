@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./App.css";
 import DogIcon from "./DogIcon";
 import dogOne from "/images/dog1.png";
