@@ -35,9 +35,76 @@ import dogTimes from "/images/dogt.png";
 import hoverDogTimes from "/images/hoverdogt.png";
 
 function App() {
-  const inputRef = useRef(null);
-  const resultRef = useRef(null);
-  const [result, setResult] = useState(0);
+  const [display, setDisplay] = useState("0");
+  const [firstNumber, setFirstNumber] = useState(null);
+  const [operator, setOperator] = useState(null);
+  const [waitingForSecondNumber, setWaitingForSecondNumber] = useState(false);
+
+  const handleButton = (value) => {
+    // Numbers
+    if (/^\d$/.test(value)) {
+      if (waitingForSecondNumber) {
+        setDisplay(value);
+        setWaitingForSecondNumber(false);
+        return;
+      }
+
+      const digitsOnly = display.replace("-", "").replace(".", "");
+
+      if (digitsOnly.length >= 8) {
+        return;
+      }
+
+      setDisplay(display === "0" ? value : display + value);
+      return;
+    }
+
+    if (value === "C") {
+      setDisplay("0");
+      setFirstNumber(null);
+      setOperator(null);
+      setWaitingForSecondNumber(false);
+      return;
+    }
+
+    if (["+", "-", "*", "/"].includes(value)) {
+      setFirstNumber(Number(display));
+      setOperator(value);
+      setWaitingForSecondNumber(true);
+      return;
+    }
+
+    if (value === "=") {
+      if (firstNumber === null || operator === null) {
+        return;
+      }
+
+      const secondNumber = Number(display);
+      let result;
+
+      switch (operator) {
+        case "+":
+          result = firstNumber + secondNumber;
+          break;
+        case "-":
+          result = firstNumber - secondNumber;
+          break;
+        case "*":
+          result = firstNumber * secondNumber;
+          break;
+        case "/":
+          result = secondNumber === 0 ? "Error" : firstNumber / secondNumber;
+          break;
+        default:
+          return;
+      }
+
+      setDisplay(String(result));
+      setFirstNumber(null);
+      setOperator(null);
+      setWaitingForSecondNumber(true);
+    }
+  };
 
   return (
     <>
@@ -45,94 +112,125 @@ function App() {
         <div id="calculator">
           <form>
             <input
-              pattern="[0-9]"
-              ref={inputRef}
-              type="number"
-              placeholder=" 0"
-              maxLength="10"
+              type="text"
+              value={display}
+              placeholder="0"
               disabled
+              readOnly
             />
             <div id="calculator-icons">
-              <DogIcon
-                first={dogOne}
-                second={hoverDogOne}
-                alt="A dog icon with number 1"
-              />
-              <DogIcon
-                first={dogTwo}
-                second={hoverDogTwo}
-                alt="A dog icon with number 2"
-              />
-              <DogIcon
-                first={dogThree}
-                second={hoverDogThree}
-                alt="A dog icon with number 3"
-              />
-              <DogIcon
-                first={dogPlus}
-                second={hoverDogPlus}
-                alt="A dog icon with a plus symbol"
-              />
-              <DogIcon
-                first={dogFour}
-                second={hoverDogFour}
-                alt="A dog icon with number 4"
-              />
-              <DogIcon
-                first={dogFive}
-                second={hoverDogFive}
-                alt="A dog icon with number 5"
-              />
-              <DogIcon
-                first={dogSix}
-                second={hoverDogSix}
-                alt="A dog icon with number 6"
-              />
-              <DogIcon
-                first={dogMinus}
-                second={hoverDogMinus}
-                alt="A dog icon with a minus symbol"
-              />
-              <DogIcon
-                first={dogSeven}
-                second={hoverDogSeven}
-                alt="A dog icon with number 7"
-              />
-              <DogIcon
-                first={dogEight}
-                second={hoverDogEight}
-                alt="A dog icon with number 8"
-              />
-              <DogIcon
-                first={dogNine}
-                second={hoverDogNine}
-                alt="A dog icon with number 9"
-              />
-              <DogIcon
-                first={dogTimes}
-                second={hoverDogTimes}
-                alt="A dog icon with a multiply symbol"
-              />
-              <DogIcon
-                first={dogZero}
-                second={hoverDogZero}
-                alt="A dog icon with number 0"
-              />
-              <DogIcon
-                first={dogClear}
-                second={hoverDogClear}
-                alt="A dog icon with a clear symbol"
-              />
-              <DogIcon
-                first={dogEquals}
-                second={hoverDogEquals}
-                alt="A dog icon with an equals symbol"
-              />
-              <DogIcon
-                first={dogDivide}
-                second={hoverDogDivide}
-                alt="A dog icon with a divide symbol"
-              />
+              <div onClick={() => handleButton("1")}>
+                <DogIcon
+                  first={dogOne}
+                  second={hoverDogOne}
+                  alt="A dog icon with number 1"
+                />
+              </div>
+              <div onClick={() => handleButton("2")}>
+                <DogIcon
+                  first={dogTwo}
+                  second={hoverDogTwo}
+                  alt="A dog icon with number 2"
+                />
+              </div>
+              <div onClick={() => handleButton("3")}>
+                <DogIcon
+                  first={dogThree}
+                  second={hoverDogThree}
+                  alt="A dog icon with number 3"
+                />
+              </div>
+              <div onClick={() => handleButton("+")}>
+                <DogIcon
+                  first={dogPlus}
+                  second={hoverDogPlus}
+                  alt="A dog icon with a plus symbol"
+                />
+              </div>
+              <div onClick={() => handleButton("4")}>
+                <DogIcon
+                  first={dogFour}
+                  second={hoverDogFour}
+                  alt="A dog icon with number 4"
+                />
+              </div>
+              <div onClick={() => handleButton("5")}>
+                <DogIcon
+                  first={dogFive}
+                  second={hoverDogFive}
+                  alt="A dog icon with number 5"
+                />
+              </div>
+              <div onClick={() => handleButton("6")}>
+                <DogIcon
+                  first={dogSix}
+                  second={hoverDogSix}
+                  alt="A dog icon with number 6"
+                />
+              </div>
+              <div onClick={() => handleButton("-")}>
+                <DogIcon
+                  first={dogMinus}
+                  second={hoverDogMinus}
+                  alt="A dog icon with a minus symbol"
+                />
+              </div>
+              <div onClick={() => handleButton("7")}>
+                <DogIcon
+                  first={dogSeven}
+                  second={hoverDogSeven}
+                  alt="A dog icon with number 7"
+                />
+              </div>
+              <div onClick={() => handleButton("8")}>
+                <DogIcon
+                  first={dogEight}
+                  second={hoverDogEight}
+                  alt="A dog icon with number 8"
+                />
+              </div>
+              <div onClick={() => handleButton("9")}>
+                <DogIcon
+                  first={dogNine}
+                  second={hoverDogNine}
+                  alt="A dog icon with number 9"
+                />
+              </div>
+              <div onClick={() => handleButton("*")}>
+                <DogIcon
+                  first={dogTimes}
+                  second={hoverDogTimes}
+                  alt="A dog icon with a multiply symbol"
+                />
+              </div>
+              <div onClick={() => handleButton("0")}>
+                <DogIcon
+                  first={dogZero}
+                  second={hoverDogZero}
+                  alt="A dog icon with number 0"
+                />
+              </div>
+              <div onClick={() => handleButton("C")}>
+                <DogIcon
+                  first={dogClear}
+                  second={hoverDogClear}
+                  alt="A dog icon with a clear symbol"
+                />
+              </div>
+              <div onClick={() => handleButton("=")}>
+                <DogIcon
+                  first={dogEquals}
+                  second={hoverDogEquals}
+                  alt="A dog icon with an equals symbol"
+                />
+              </div>
+              <div onClick={() => handleButton("/")}>
+                <DogIcon
+                  first={dogDivide}
+                  second={hoverDogDivide}
+                  alt="A dog icon with a divide symbol"
+                />
+              </div>
             </div>
           </form>
         </div>
