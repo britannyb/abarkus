@@ -74,6 +74,10 @@ textarea::placeholder {
 }
 
 @media (max-width: 600px) {
+  body {
+    background: white url("/images/mobilebg.png") no-repeat center center;
+  }
+
   #main {
     padding-top: 60px;
   }

@@ -38,14 +38,14 @@ function App() {
   const [display, setDisplay] = useState("0");
   const [firstNumber, setFirstNumber] = useState(null);
   const [operator, setOperator] = useState(null);
-  const [waitingForSecondNumber, setWaitingForSecondNumber] = useState(false);
+  const [secondNumber, setSecondNumber] = useState(false);
 
   const handleButton = (value) => {
     // Numbers
     if (/^\d$/.test(value)) {
-      if (waitingForSecondNumber) {
+      if (secondNumber) {
         setDisplay(value);
-        setWaitingForSecondNumber(false);
+        setSecondNumber(false);
         return;
       }
 
@@ -63,14 +63,14 @@ function App() {
       setDisplay("0");
       setFirstNumber(null);
       setOperator(null);
-      setWaitingForSecondNumber(false);
+      setSecondNumber(false);
       return;
     }
 
     if (["+", "-", "*", "/"].includes(value)) {
       setFirstNumber(Number(display));
       setOperator(value);
-      setWaitingForSecondNumber(true);
+      setSecondNumber(true);
       return;
     }
 
@@ -102,7 +102,7 @@ function App() {
       setDisplay(String(result));
       setFirstNumber(null);
       setOperator(null);
-      setWaitingForSecondNumber(true);
+      setSecondNumber(true);
     }
   };
 
