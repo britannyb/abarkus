@@ -111,4 +111,8 @@ textarea::placeholder {
   #calculator {
     max-width: 300px;
   }
+
+  #calculator form input {
+    font-size: 52px;
+  }
 }
