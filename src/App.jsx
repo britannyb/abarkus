@@ -41,7 +41,6 @@ function App() {
   const [secondNumber, setSecondNumber] = useState(false);
 
   const handleButton = (value) => {
-    // Numbers
     if (/^\d$/.test(value)) {
       if (secondNumber) {
         setDisplay(value);
