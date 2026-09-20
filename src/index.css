@@ -56,7 +56,8 @@ input:disabled {
   background-image: linear-gradient(#2fdb97, #1e8f62);
   color: white;
   font-size: 84px;
-  width: 470px;
+  box-sizing: border-box;
+  width: 476px;
   padding: 0 0 0 20px;
   margin: 0 0 20px;
   margin-bottom: 20px;
@@ -105,7 +106,7 @@ textarea::placeholder {
   #calculator form input {
     border: 6px solid #e4e4e4;
     font-size: 64px;
-    width: 360px;
+    width: 366px;
     margin-bottom: 10px;
     padding-left: 10px;
   }
@@ -136,6 +137,6 @@ textarea::placeholder {
 
   #calculator form input {
     font-size: 52px;
-    width: 280px;
+    width: 286px;
   }
 }
