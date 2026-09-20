@@ -56,9 +56,10 @@ input:disabled {
   background-image: linear-gradient(#2fdb97, #1e8f62);
   color: white;
   font-size: 84px;
+  text-align: center;
   box-sizing: border-box;
   width: 476px;
-  padding: 0 0 0 20px;
+  padding: 0;
   margin: 0 0 20px;
   margin-bottom: 20px;
   border: 10px solid #e4e4e4;

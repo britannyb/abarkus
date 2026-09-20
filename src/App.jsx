@@ -98,7 +98,13 @@ function App() {
           return;
       }
 
-      setDisplay(String(result));
+      if (String(Math.floor(Math.abs(result))).length > 6) {
+        setDisplay(result.toExponential(4));
+      } else if (result % 1 !== 0 && result !== "Error") {
+        setDisplay(String(Number(result.toFixed(4))));
+      } else {
+        setDisplay(String(result));
+      }
       setFirstNumber(null);
       setOperator(null);
       setSecondNumber(true);
