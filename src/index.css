@@ -5,7 +5,7 @@
 }
 
 body {
-  background: white url("/images/bg.png") no-repeat center center;
+  background: white url("/images/bg.png") center center / cover no-repeat fixed;
   min-width: 320px;
 }
 
@@ -75,7 +75,8 @@ textarea::placeholder {
 
 @media (max-width: 600px) {
   body {
-    background: white url("/images/mobilebg.png") no-repeat center center;
+    background: white url("/images/mobilebg.png") center center / cover
+      no-repeat fixed;
   }
 
   #main {
