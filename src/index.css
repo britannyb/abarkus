@@ -50,6 +50,7 @@ body {
 }
 
 #calculator form input {
+  background-color: rgba(47 219 151, 1);
   background-image: linear-gradient(#2fdb97, #1e8f62);
   border: 10px solid #e4e4e4;
   border-radius: 20px;
