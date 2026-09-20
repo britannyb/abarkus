@@ -49,7 +49,6 @@ body {
 }
 
 #calculator form input,
-input,
 input:disabled {
   -webkit-appearance: none;
   appearance: none;
@@ -57,7 +56,6 @@ input:disabled {
   background-image: linear-gradient(#2fdb97, #1e8f62);
   color: white;
   font-size: 84px;
-  box-sizing: border-box;
   width: 476px;
   padding: 0 0 0 20px;
   margin: 0 0 20px;
