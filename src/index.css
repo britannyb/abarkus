@@ -35,7 +35,7 @@ body {
 #calculator {
   width: 500px;
   border: 10px solid #e4e4e4;
-  background-color: rgba(234, 234, 234, 0.8);
+  background: url("/images/transbg.png") center center / cover no-repeat fixed;
   border-radius: 40px;
   padding: 20px;
 }
