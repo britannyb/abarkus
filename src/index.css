@@ -35,7 +35,7 @@ body {
 #calculator {
   width: 500px;
   border: 10px solid #e4e4e4;
-  background: url("/images/transbg.png") center center / cover no-repeat fixed;
+  background-color: rgba(234, 234, 234, 0.8);
   border-radius: 40px;
   padding: 20px;
 }
@@ -48,9 +48,11 @@ body {
   width: 100%;
 }
 
-#calculator form input {
+#calculator form input,
+input:disabled {
   -webkit-appearance: none;
   appearance: none;
+  opacity: 1;
   background-image: linear-gradient(#2fdb97, #1e8f62);
   border: 10px solid #e4e4e4;
   border-radius: 20px;
@@ -66,10 +68,6 @@ body {
 input::placeholder,
 textarea::placeholder {
   color: white;
-}
-
-input:disabled {
-  opacity: 1;
 }
 
 #calculator-icons {
