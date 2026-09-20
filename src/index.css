@@ -68,6 +68,10 @@ textarea::placeholder {
   color: white;
 }
 
+input:disabled {
+  opacity: 1;
+}
+
 #calculator-icons {
   display: grid;
   place-items: center;
