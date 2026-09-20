@@ -1,13 +1,15 @@
 import { useState } from "react";
-import bark1 from "/sounds/bark1.mp3";
-import bark2 from "/sounds/bark2.mp3";
-import bark3 from "/sounds/bark3.mp3";
-import bark4 from "/sounds/bark4.mp3";
 
 export default function DogIcon(props) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const sounds = [{ bark1 }, { bark2 }, { bark3 }, { bark4 }];
+  const base = import.meta.env.BASE_URL;
+  const sounds = [
+    `${base}/sounds/bark1.mp3`,
+    `${base}/sounds/bark2.mp3`,
+    `${base}/sounds/bark3.mp3`,
+    `${base}/sounds/bark4.mp3`,
+  ];
 
   const randomBark = () => {
     const random = Math.floor(Math.random() * sounds.length);
