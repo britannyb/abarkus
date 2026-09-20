@@ -117,6 +117,8 @@ function App() {
         <div id="calculator">
           <form>
             <input
+              id="display"
+              name="display"
               type="text"
               value={display}
               placeholder="0"
